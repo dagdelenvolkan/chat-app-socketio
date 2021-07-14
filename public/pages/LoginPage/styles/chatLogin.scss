@@ -122,3 +122,173 @@
 
 
 
+@media screen and (min-width:1500px) and (max-width:1700px) {
+    
+.loginContainer {
+
+    .leftPanel {
+
+        .leftPanelInfo {
+            max-width: 500px;
+
+            h1 {
+                font-size: 3.4rem;    
+
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        svg {
+            width: 550px;
+            height: 550px;
+        }
+    }
+}
+} 
+
+@media screen and (min-width:1300px) and (max-width:1500px) {
+    
+.loginContainer {
+
+    .leftPanel {
+        flex-grow: 2;
+        .leftPanelInfo {
+            max-width: 400px;
+
+            h1 {
+                font-size: 3.3rem;    
+
+            }
+
+            h2 {
+                font-size: 1.1rem;
+            }
+        }
+
+        svg {
+            width: 500px;
+            height: 500px;
+        }
+    }
+
+    .loginPanel {
+        flex-grow: 2;
+    }
+
+}
+} 
+
+
+
+@media screen and (min-width:1000px) and (max-width:1300px) {
+    
+    .loginContainer {
+    
+        .leftPanel {
+            flex-grow: 2;
+            .leftPanelInfo {
+                max-width: 250px;
+    
+                h1 {
+                    font-size: 3rem;    
+    
+                }
+    
+                h2 {
+                    font-size: 1rem;
+                }
+            }
+    
+            svg {
+                width: 350px;
+                height: 350px;
+            }
+        }
+    
+        .loginPanel {
+            .loginPanelTitle {
+                font-size: 2.2rem;
+            }
+        
+            .loginForm {
+                
+                input[type='text'] {
+                    width: 13rem;
+    
+                }
+            }
+        }
+    
+    }
+    } 
+
+
+@media screen and (min-width:650px) and (max-width:1000px) {
+
+.loginContainer {
+
+    .leftPanel {
+        flex-grow: 2;
+        .leftPanelInfo {
+            max-width: 250px;
+            margin-bottom: 70px;
+
+            h1 {
+                font-size: 3rem;    
+
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+        }
+
+        svg {
+            display: none;
+        }
+
+        .refSvg {
+            display: none;
+        }
+    }
+
+
+
+}
+} 
+
+@media screen and (min-width:400px) and (max-width:650px) {
+    .loginContainer {
+    
+        .leftPanel {
+            display: none;
+        }
+    }
+} 
+    
+    
+@media screen and (min-width:200px) and (max-width:400px) {
+    .loginContainer {     
+        .leftPanel {
+            display: none;
+        }
+
+        .loginPanel {
+            .loginPanelTitle {
+                font-size: 2rem;
+            }
+        
+            .loginForm {
+                input[type='text'] {
+                    font-size: 0.9rem;
+                    width: 10rem;
+    
+                }
+            }
+        }
+
+    }
+} 
