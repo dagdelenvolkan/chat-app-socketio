@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="./styles/chatLogin.css">
     <title>Chat App</title>
 </head>
@@ -22,8 +23,14 @@
         <div class="loginPanel">
             <h1 class="loginPanelTitle">LOG IN</h1>
             <form action="../ChatPage/chat.html" class="loginForm">
-            <input type="text" id="userName" maxlength="15" name="username" placeholder="Enter a user name" autocomplete="off" required>
-            <input type="text" id="roomName" maxlength="15" name="roomname" placeholder="Enter a room name" autocomplete="off" required>
+                <div class="loginInput">
+                    <i class="uil uil-user"></i>
+                    <input type="text" id="userName" maxlength="15" name="username" placeholder="Enter a user name" autocomplete="off" required>
+                </div>
+                <div class="loginInput">
+                    <i class="uil uil-comments"></i>
+                    <input type="text" id="roomName" maxlength="15" name="roomname" placeholder="Enter a room name" autocomplete="off" required>
+                </div>
             <input type="submit" value="JOIN ROOM">
             </form>
         </div>
