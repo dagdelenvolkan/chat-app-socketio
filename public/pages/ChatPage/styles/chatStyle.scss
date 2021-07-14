@@ -94,9 +94,9 @@ body {
             word-wrap: break-word;
         }
 
-        .right {
+        &.right {
             justify-content: flex-end;
-
+            
             div::before {
                 content: '';
                 width: 0;
@@ -110,7 +110,8 @@ body {
             }
         }
 
-        .left {
+
+        &.left {
             div::before {
                 content: '';
                 width: 0;

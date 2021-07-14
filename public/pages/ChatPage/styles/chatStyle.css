@@ -106,13 +106,13 @@ body {
   word-wrap: break-word;
 }
 
-#messages li .right {
+#messages li.right {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
 
-#messages li .right div::before {
+#messages li.right div::before {
   content: '';
   width: 0;
   height: 0;
@@ -124,7 +124,7 @@ body {
   border-left: 7px solid #333;
 }
 
-#messages li .left div::before {
+#messages li.left div::before {
   content: '';
   width: 0;
   height: 0;
