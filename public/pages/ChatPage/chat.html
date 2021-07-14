@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHAT APP</title>
-</head>
-<body>
-    
-</body>
+<html>
+    <head>
+        <title>Chat App</title>
+        <link rel="stylesheet" href="./styles/chatStyle.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+        </head>
+    <body>
+        <div class="roomInfo">
+            <div class="userCount">
+
+            </div>
+            <div class="roomName">
+            
+            </div>
+            <a href="/" class="exitChat">
+            <i class="uil uil-signout"></i>
+            </a>
+        </div>
+        <ul class="userInfo"></ul>
+        <ul id="messages"></ul>
+        <form id="form" action="">
+            <emoji-picker class="emojiPicker light"></emoji-picker>
+            <div class="typingInfo"></div>
+            <input id="input" autocomplete="off" />
+            <a class="emojiButton"><i class="uil uil-grin"></i></a>
+            <button><i class="uil uil-message"></i></button>
+        </form>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="./client.js"></script>
+    </body>
 </html>

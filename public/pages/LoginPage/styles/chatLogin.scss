@@ -6,11 +6,11 @@
 }
 
 // Variables
-    $first-color: #92E3A9;
-    $first-color-hover: #72ad83;
-    $first-btn-color: #333;
-    $first-btn-hover: #5e5e5e;
-    $login-font-size: 18px;
+$first-color: #92E3A9;
+$first-color-hover: #72ad83;
+$first-btn-color: #333;
+$first-btn-hover: #5e5e5e;
+$login-font-size: 18px;
 
 .loginContainer {
     display: flex;
@@ -28,6 +28,7 @@
 
         .leftPanelInfo {
             max-width: 500px;
+            margin-bottom: 120px;
 
             h1 {
                 font-size: 4rem;
@@ -37,7 +38,7 @@
             }
 
             h2 {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
                 font-weight: 400;
                 &:not(:last-child) {
                     margin-bottom: 17px;
@@ -69,7 +70,7 @@
     }
 
     .loginPanel {
-        flex-grow: 1;
+        flex-grow: 2;
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -108,6 +109,11 @@
 
                 &:focus {
                     outline: none;
+                    border-color: $first-color; 
+
+                    i {
+                        color: $first-color;
+                    }
                 }
             }
 
@@ -167,6 +173,7 @@
         flex-grow: 2;
         .leftPanelInfo {
             max-width: 400px;
+            margin-bottom: 80px;
 
             h1 {
                 font-size: 3.3rem;    
@@ -201,6 +208,7 @@
             flex-grow: 2;
             .leftPanelInfo {
                 max-width: 250px;
+                margin-bottom: 0;
     
                 h1 {
                     font-size: 3rem;    
