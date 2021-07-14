@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap");
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#form {
+  background: #92E3A9;
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 3rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#form #input {
+  border: none;
+  padding: 0 1rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border-radius: 5px;
+  margin: 0.25rem;
+  font-size: 18px;
+}
+
+#form #input:focus {
+  outline: none;
+}
+
+#form button, #form a {
+  background-color: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#form button:hover, #form a:hover {
+  background-color: #5e5e5e;
+}
+
+#form a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
+}
+
+#form .emojiPicker {
+  position: absolute;
+  bottom: 3rem;
+  right: 1rem;
+  z-index: 99999;
+  display: none;
+}
+
+#form .typingInfo {
+  position: absolute;
+  bottom: 3.2rem;
+  left: 1rem;
+  font-size: 18px;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 70px;
+}
+
+#messages li {
+  padding: 1.5rem 1rem 0.5rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  margin-top: 20px;
+}
+
+#messages li div {
+  max-width: 300px;
+  height: auto;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  line-height: 1.4;
+  color: #fff;
+  word-wrap: break-word;
+}
+
+#messages li .right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+#messages li .right div::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 21px;
+  right: -5px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid #333;
+}
+
+#messages li .left div::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 21px;
+  left: -5px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 7px solid #333;
+}
+
+#messages li #author-right {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+}
+
+#messages li #author-left {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+}
+
+#messages li .connect {
+  color: #aff7af;
+}
+
+#messages li .dc {
+  color: #ff8e8e;
+}
+
+.roomInfo {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #92E3A9;
+  font-size: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+}
+
+.roomInfo .userCount {
+  position: absolute;
+  top: 8px;
+  left: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.roomInfo .userCount:hover {
+  color: #5e5e5e;
+}
+
+.roomInfo .userCount i {
+  margin-right: 5px;
+  font-size: 22px;
+}
+
+.roomInfo .exitChat {
+  position: absolute;
+  right: 10px;
+  color: black;
+}
+
+.roomInfo .exitChat:hover {
+  color: #5e5e5e;
+}
+
+.roomInfo .exitChat i {
+  font-size: 25px;
+}
+
+.userInfo {
+  position: fixed;
+  top: 24px;
+  width: 190px;
+  height: calc(100vh - 40px - 48px);
+  z-index: 99999999;
+  background-color: #bcdbc5f1;
+  list-style: none;
+  display: none;
+}
+
+.userInfo li {
+  margin-top: 15px;
+  margin-left: -25px;
+}
+/*# sourceMappingURL=chatStyle.css.map */

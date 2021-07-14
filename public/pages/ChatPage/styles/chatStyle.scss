@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#form {
+    background: #92E3A9;
+    padding: 0.25rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 3rem;
+    box-sizing: border-box;
+
+    #input {
+        border: none; 
+        padding: 0 1rem;
+        flex-grow: 1;
+        border-radius: 5px; 
+        margin: 0.25rem; 
+        font-size: 18px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button, a {
+        background-color: #333; 
+        border: none; 
+        padding: 0 1rem; 
+        margin: 0.25rem; 
+        border-radius: 3px; 
+        outline: none; 
+        color: #fff; 
+        cursor: pointer;
+        font-size: 18px;
+
+        &:hover {
+            background-color: #5e5e5e;
+        }
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+    }
+
+    .emojiPicker {
+        position: absolute;
+        bottom: 3rem;
+        right: 1rem;
+        z-index: 99999;
+        display: none;
+    }
+
+    .typingInfo {
+        position: absolute;
+        bottom: 3.2rem;
+        left: 1rem;
+        font-size: 18px;
+    }
+
+    
+}
+
+#messages {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    margin-top: 70px;
+
+    li {
+        padding: 1.5rem 1rem 0.5rem 1rem; 
+        display: flex; 
+        position: relative; 
+        margin-top: 20px;
+
+        div {
+            max-width: 300px;
+            height: auto;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative;
+            line-height: 1.4;
+            color: #fff;
+            word-wrap: break-word;
+        }
+
+        .right {
+            justify-content: flex-end;
+
+            div::before {
+                content: '';
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 21px;
+                right: -5px;
+                border-top: 7px solid transparent;
+                border-bottom: 7px solid transparent;
+                border-left: 7px solid #333;
+            }
+        }
+
+        .left {
+            div::before {
+                content: '';
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 21px;
+                left: -5px;
+                border-top: 7px solid transparent;
+                border-bottom: 7px solid transparent;
+                border-right: 7px solid #333;
+            }
+        }
+
+        #author-right {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+        }
+        
+        #author-left {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
+
+        .connect {
+            color: #aff7af;
+        }
+        
+        .dc {
+        color: #ff8e8e;
+        }
+    }
+}
+
+.roomInfo {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #92E3A9;
+    font-size: 20px;
+    position: fixed;
+    top: 0; 
+    width: 100%;
+    z-index: 99999;
+
+    .userCount {
+        position: absolute;
+        top: 8px;
+        left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            color: #5e5e5e;
+        }
+
+        i {
+            margin-right: 5px;
+            font-size: 22px;
+        }
+    }
+
+    .exitChat {
+        position: absolute;
+        right: 10px;
+        color: black;
+
+        &:hover {
+            color: #5e5e5e;
+        }
+
+        i {
+            font-size: 25px;
+        }
+}
+}
+
+.userInfo {
+    position: fixed;
+    top: 24px;
+    width: 190px;
+    height: calc(100vh - 40px - 48px);
+    z-index: 99999999;
+    background-color: #bcdbc5f1;
+    list-style: none;
+    display: none;
+
+    li {
+        margin-top: 15px;
+        margin-left: -25px;
+    }
+}
