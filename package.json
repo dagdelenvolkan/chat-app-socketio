@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "dev": "nodemon server",
+    "start": "node server"
+  },
   "name": "chat-app-socketio",
   "version": "1.0.0",
   "main": "index.js",
