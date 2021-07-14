@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.loginContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.loginContainer .leftPanel {
+  -webkit-box-flex: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+  background-color: #92E3A9;
+  height: 100vh;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0 50px;
+}
+
+.loginContainer .leftPanel .leftPanelInfo {
+  max-width: 500px;
+}
+
+.loginContainer .leftPanel .leftPanelInfo h1 {
+  font-size: 4rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.loginContainer .leftPanel .leftPanelInfo h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.loginContainer .leftPanel .leftPanelInfo h2:not(:last-child) {
+  margin-bottom: 17px;
+}
+
+.loginContainer .leftPanel svg {
+  width: 700px;
+  height: 700px;
+}
+
+.loginContainer .leftPanel .refSvg {
+  text-decoration: none;
+  color: #333;
+  position: absolute;
+  bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.loginContainer .leftPanel .refSvg:hover {
+  color: #5e5e5e;
+}
+
+.loginContainer .loginPanel {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loginContainer .loginPanel .loginPanelTitle {
+  margin-bottom: 4rem;
+  font-size: 2.5rem;
+}
+
+.loginContainer .loginPanel .loginForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px 0;
+}
+
+.loginContainer .loginPanel .loginForm input[type='text'] {
+  height: 3rem;
+  width: 15rem;
+  padding-left: 1.2rem;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  font-size: 18px;
+}
+
+.loginContainer .loginPanel .loginForm input[type='text']:focus {
+  outline: none;
+}
+
+.loginContainer .loginPanel .loginForm input[type='submit'] {
+  height: 3rem;
+  border-radius: 5px;
+  border: none;
+  margin-top: 2rem;
+  font-size: 18px;
+  background-color: #333;
+  cursor: pointer;
+  color: #fff;
+}
+
+.loginContainer .loginPanel .loginForm input[type='submit']:hover {
+  background-color: #5e5e5e;
+}
+/*# sourceMappingURL=chatLogin.css.map */
