@@ -49,10 +49,12 @@ io.on('connection', (socket) => {
     
     if (users.length > 0) {
         username = users.find(user => user.id === socket.id)
-        socket.join(username.room)
-        roomUsers = users.filter(user => user.room === username.room)
-        socket.to(username.room).emit('userCount', roomUsers.length)
-        socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='connect'> has joined the room</span>"))
+        if (username.room) {
+            socket.join(username.room)
+            roomUsers = users.filter(user => user.room === username.room)
+            socket.to(username.room).emit('userCount', roomUsers.length)
+            socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='connect'> has joined the room</span>"))
+        }
     }
 
     socket.on('chat', (msg) => {
@@ -64,11 +66,13 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         username = users.find(user => user.id === socket.id)
         users = users.filter((user) => user !== username)
-        socket.join(username.room)
-        roomUsers = users.filter(user => user.room === username.room)
-        io.to(username.room).emit('users', roomUsers)
-        socket.to(username.room).emit('userCount', roomUsers.length)
-        socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='dc'>has been disconnected</span>"))
+        if (username) {
+            socket.join(username.room)
+            roomUsers = users.filter(user => user.room === username.room)
+            io.to(username.room).emit('users', roomUsers)
+            socket.to(username.room).emit('userCount', roomUsers.length)
+            socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='dc'>has been disconnected</span>"))
+        }
     })
 
     socket.on('typing', () => {
