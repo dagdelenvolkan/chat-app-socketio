@@ -1,7 +1,8 @@
 # Real Time Chat with Socket.io
-<img src='https://img.shields.io/badge/license-MIT-green'>
-<img src='https://img.shields.io/badge/npm-v6.14.11-blue'>
-<img src='https://img.shields.io/badge/node-v14.16.0-blue'>
+![](https://img.shields.io/badge/license-MIT-green)
+![](https://img.shields.io/badge/npm-v6.14.11-blue)
+![](https://img.shields.io/badge/node-v14.16.0-blue)
+
 
 
 
@@ -22,10 +23,11 @@ Live Demo: https://chat-yapp.herokuapp.com/
 
 ## Media
 <img src="images/loginPage.png">
-<center>
-<img src="images/chatPage.png" width='300px'>
-<img src="images/chatPage2.png" width='300px'>
-</center>
+
+Chat Screen 1             |  Chat Screen 2
+:-------------------------:|:-------------------------:
+<img src="images/chatPage.png"> | <img src="images/chatPage2.png">
+
 
 <hr>
 
