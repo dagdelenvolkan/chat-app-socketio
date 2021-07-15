@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 app.get('/ChatPage/chat.html', (req, res) => {
     app.use(express.static(__dirname + '/public/pages/'))
-    if (req.query.username.length > 15 || req.query.roomname.length > 15) {
+    if (req.query.username.length > 15 || req.query.roomname.length > 10) {
         return res.sendStatus(400)
     }
     user.userName = req.query.username

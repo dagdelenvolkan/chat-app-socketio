@@ -39,6 +39,7 @@ body {
         color: #fff; 
         cursor: pointer;
         font-size: 18px;
+    
 
         &:hover {
             background-color: #5e5e5e;
@@ -207,5 +208,30 @@ body {
     li {
         margin-top: 15px;
         margin-left: -25px;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    #form {
+        #input {
+            width: 150px;
+        }
+        button, a {
+            padding: 0 0.6rem;
+        }
+    }
+
+    .emojiPicker {
+        width: 200px;
+        --num-columns: 5;
+    }
+
+    #messages {
+        li {
+            div {
+                max-width: 200px;
+            }
+        }
     }
 }

@@ -230,4 +230,20 @@ body {
   margin-top: 15px;
   margin-left: -25px;
 }
+
+@media screen and (max-width: 450px) {
+  #form #input {
+    width: 150px;
+  }
+  #form button, #form a {
+    padding: 0 0.6rem;
+  }
+  .emojiPicker {
+    width: 200px;
+    --num-columns: 5;
+  }
+  #messages li div {
+    max-width: 200px;
+  }
+}
 /*# sourceMappingURL=chatStyle.css.map */
