@@ -7,6 +7,8 @@ const server = http.createServer(app)
 const io     = new Server(server)
 const PORT   = process.env.PORT || 3000
 
+const addUser = require('./db/Controllers/userController')
+
 let users = []
 let user  = {}
 let rooms = []
@@ -38,6 +40,7 @@ io.on('connection', (socket) => {
         user.id = socket.id
         user.room = room
         users.push(user)
+        addUser(user.id, user.userName, 'Deneme')
         user = {}
         socket.join(room)
         io.to(room).emit('users', users)
