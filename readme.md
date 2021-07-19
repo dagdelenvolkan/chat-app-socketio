@@ -16,6 +16,7 @@ Live Demo: https://chat-yapp.herokuapp.com/
 🚀 Real Time chat experience with web sockets. <br>
 🚀 Online users information <br>
 🚀 {User} is typing... functionality <br>
+🚀 Saves chat messages on firebase until all users left <br>
 🚀 Send emoji with using [Emoji Picker Element Library](https://github.com/nolanlawson/emoji-picker-element) <br>
 🚀 Responsive design <br>
 
