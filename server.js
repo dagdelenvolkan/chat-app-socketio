@@ -7,12 +7,14 @@ const server = http.createServer(app)
 const io     = new Server(server)
 const PORT   = process.env.PORT || 3000
 
-const addUser = require('./db/Controllers/userController')
+const {addRooms, getRoom, updateRooms} = require('./db/Controllers/roomController')
+const User = require('./db/models/user')
+
 
 let users = []
 let user  = {}
 let rooms = []
-let room;
+let room = {};
 
 app.get('/', (req, res) => {    
     app.use(express.static(__dirname + '/public/pages/LoginPage'))
@@ -25,8 +27,10 @@ app.get('/ChatPage/chat.html', (req, res) => {
         return res.sendStatus(400)
     }
     user.userName = req.query.username
-    room = req.query.roomname
+    room.name = req.query.roomname
+    room.messages = []
     rooms.includes(room) ? null : rooms.push(room)
+    addRooms(rooms, room.name)
     res.sendFile(__dirname + '/public/pages/ChatPage/chat.html')
 })
 
@@ -37,23 +41,32 @@ const formatMessage = (user, text) => {
 io.on('connection', (socket) => {
     
     if (user.userName) {
-        user.id = socket.id
-        user.room = room
-        users.push(user)
-        addUser(user.id, user.userName, 'Deneme')
+        let userModel = new User(socket.id, user.userName, room.name)
+        // user.id = socket.id
+        // user.room = room.name
+        users.push(userModel)
         user = {}
-        socket.join(room)
-        io.to(room).emit('users', users)
-        io.to(room).emit('roomname', room)
-        roomUsers = users.filter(user => user.room === room)
-        io.to(room).emit('userCount', roomUsers.length)
-        room = ''
+        socket.join(room.name)
+        io.to(room.name).emit('users', users)
+        io.to(room.name).emit('roomname', room.name)
+        roomUsers = users.filter(user => user.room === room.name)
+        io.to(room.name).emit('userCount', roomUsers.length)
+        room = {}
     }
     
     if (users.length > 0) {
-        username = users.find(user => user.id === socket.id)
+        let username = users.find(user => user.id === socket.id)
+        let roomData = getRoom(username.room)
         if (username.room) {
             socket.join(username.room)
+            if (roomData) {
+                roomData
+                .then(data => data.messages ? data.messages.map(message => {
+                    console.log(message.user);
+                    io.to(data.name).emit('chat', formatMessage(message.user, message.message))
+                }): null)
+                .then(console.log('Succesfull'))
+            }
             roomUsers = users.filter(user => user.room === username.room)
             socket.to(username.room).emit('userCount', roomUsers.length)
             socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='connect'> has joined the room</span>"))
@@ -64,6 +77,7 @@ io.on('connection', (socket) => {
         username = users.find(user => user.id === socket.id)
         socket.join(username.room)
         io.to(username.room).emit('chat', formatMessage(username, msg))
+        updateRooms(username.room, username, msg)
     })
 
     socket.on('disconnect', () => {

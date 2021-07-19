@@ -1,8 +1,8 @@
 class User {
-    constructor(id, userName, messages) {
-        this.userId = id;
+    constructor(id, userName, roomName) {
+        this.id = id,
         this.userName = userName,
-        this.messages = messages
+        this.room = roomName
     }
 }
 
