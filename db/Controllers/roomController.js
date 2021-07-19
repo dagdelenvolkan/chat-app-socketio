@@ -27,16 +27,24 @@ const addRooms = async (rooms, name) => {
     }
 }
 
-const updateRooms = async (roomName, userInfo, message) => {
+const updateRooms = async (roomName, userInfo, message, messageId) => {
     try {
         let query = await fireStore.collection('rooms').doc(roomName).get()
         let m = query.data().messages
-        await fireStore.collection('rooms').doc(roomName).update({messages: [...m, {user: {...userInfo}, message}]})
+        await fireStore.collection('rooms').doc(roomName).update({messages: [...m, {user: {...userInfo}, message, messageId}]})
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
-module.exports = {getRoom, addRooms, updateRooms}
+const deleteRooms = async (roomName) => {
+    try {
+        await fireStore.collection('rooms').doc(roomName).delete()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = {getRoom, addRooms, updateRooms, deleteRooms}
 
 

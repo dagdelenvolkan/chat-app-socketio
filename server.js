@@ -7,7 +7,7 @@ const server = http.createServer(app)
 const io     = new Server(server)
 const PORT   = process.env.PORT || 3000
 
-const {addRooms, getRoom, updateRooms} = require('./db/Controllers/roomController')
+const {addRooms, getRoom, updateRooms, deleteRooms} = require('./db/Controllers/roomController')
 const User = require('./db/models/user')
 
 
@@ -34,16 +34,14 @@ app.get('/ChatPage/chat.html', (req, res) => {
     res.sendFile(__dirname + '/public/pages/ChatPage/chat.html')
 })
 
-const formatMessage = (user, text) => {
-    return {user, text}
+const formatMessage = (user, text, textId) => {
+    return {user, text, textId}
 } 
 
 io.on('connection', (socket) => {
     
     if (user.userName) {
         let userModel = new User(socket.id, user.userName, room.name)
-        // user.id = socket.id
-        // user.room = room.name
         users.push(userModel)
         user = {}
         socket.join(room.name)
@@ -61,23 +59,24 @@ io.on('connection', (socket) => {
             socket.join(username.room)
             if (roomData) {
                 roomData
-                .then(data => data.messages ? data.messages.map(message => {
-                    console.log(message.user);
-                    io.to(data.name).emit('chat', formatMessage(message.user, message.message))
-                }): null)
-                .then(console.log('Succesfull'))
+                .then(data => data ? data.messages.map(message => {
+                    io.to(message.user.room).emit('chat', formatMessage(message.user, message.message, message.messageId))
+                }): null
+                )
+                .catch(error => console.log(error))
             }
             roomUsers = users.filter(user => user.room === username.room)
             socket.to(username.room).emit('userCount', roomUsers.length)
-            socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='connect'> has joined the room</span>"))
+            socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='connect'> has joined the room</span>", 1))
         }
     }
 
     socket.on('chat', (msg) => {
         username = users.find(user => user.id === socket.id)
         socket.join(username.room)
-        io.to(username.room).emit('chat', formatMessage(username, msg))
-        updateRooms(username.room, username, msg)
+        let msgId = Date.now()
+        io.to(username.room).emit('chat', formatMessage(username, msg, msgId))
+        updateRooms(username.room, username, msg, msgId)
     })
 
     socket.on('disconnect', () => {
@@ -88,7 +87,10 @@ io.on('connection', (socket) => {
             roomUsers = users.filter(user => user.room === username.room)
             io.to(username.room).emit('users', roomUsers)
             socket.to(username.room).emit('userCount', roomUsers.length)
-            socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='dc'>has been disconnected</span>"))
+            socket.broadcast.to(username.room).emit('chat', formatMessage(username, "<span class='dc'>has been disconnected</span>", -1))
+            if (roomUsers.length === 0) {
+                deleteRooms(username.room)
+            }
         }
     })
 

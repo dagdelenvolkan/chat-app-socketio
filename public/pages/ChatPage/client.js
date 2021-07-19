@@ -49,27 +49,36 @@ socket.on('typing', (msg) => {
 })
 
 socket.on('chat', function(msg) {
+
 var item = document.createElement('li');
-if (socket.id === msg.user.id) {
-    
-    messages = document.querySelector('#messages')
-    item.classList = `right ${msg.user.id}`
-    if (messages.lastChild && messages.lastChild.classList[1] === msg.user.id) {
-        item.innerHTML = '<div style="margin-top:-40px">' + msg.text + '</div>'  + `<strong id='author-right' style="display:none">${msg.user.userName}</strong>` 
-    } else {
-        item.innerHTML = '<div>' + msg.text + '</div>'  + `<strong id='author-right'>${msg.user.userName}</strong>` 
-    }
+messages = document.querySelector('#messages')
+let itemClasses = []
+document.querySelector('#messages').childNodes.forEach(e =>  itemClasses.push(e.classList[e.classList.length -1]))
+
+if (itemClasses.includes(msg.textId.toString())) {
+    return 
 } else {
-    item.classList = `left ${msg.user.id}` 
-    if (messages.lastChild && messages.lastChild.classList[1] === msg.user.id) {
-        item.innerHTML = `<strong id='author-left' style="display:none">${msg.user.userName}</strong>`  + '<div style="margin-top:-40px">' + msg.text + '</div>' 
+    if (socket.id === msg.user.id) {
+        item.classList = `right ${msg.user.id} ${msg.textId}`
+        if (messages.lastChild && messages.lastChild.classList[1] === msg.user.id) {
+            item.innerHTML = '<div style="margin-top:-40px">' + msg.text + '</div>'  + `<strong id='author-right' style="display:none">${msg.user.userName}</strong>` 
+        } else {
+            item.innerHTML = '<div>' + msg.text + '</div>'  + `<strong id='author-right'>${msg.user.userName}</strong>` 
+        }
     } else {
-        item.innerHTML =`<strong id='author-left'>${msg.user.userName}</strong>`  + '<div>' + msg.text + '</div>' 
+        item.classList = `left ${msg.user.id} ${msg.textId}` 
+        if (messages.lastChild && messages.lastChild.classList[1] === msg.user.id) {
+            item.innerHTML = `<strong id='author-left' style="display:none">${msg.user.userName}</strong>`  + '<div style="margin-top:-40px">' + msg.text + '</div>' 
+        } else {
+            item.innerHTML =`<strong id='author-left'>${msg.user.userName}</strong>`  + '<div>' + msg.text + '</div>' 
+        }
     }
 }
 messages.appendChild(item);
 window.scrollTo(0, document.body.scrollHeight);
 });
+
+
 
 
 document.querySelector('emoji-picker')
